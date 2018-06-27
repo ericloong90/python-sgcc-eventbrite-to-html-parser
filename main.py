@@ -3,6 +3,7 @@
 import sys, getopt
 import urllib.request
 import json
+import EBToHTMLParser
 
 # This part obtains arguments from user input
 # Start
@@ -35,9 +36,10 @@ for line in inputFileStream:
   listOfEventIDs.append(extractEventIDFromEventBriteURL(line).strip())
 # End
 
+ebToken = open('./token.txt').readline()
 
 listOfEventResponse = []
-eventBriteAPIToken = '?token=XCGWLF2RIJOXZFGAQRMK'
+eventBriteAPIToken = '?token=' + ebToken
 eventBriteAPIRootURL = 'https://www.eventbriteapi.com/v3/'
 eventBriteAPIEventURL = eventBriteAPIRootURL + 'events/'
 
@@ -46,3 +48,4 @@ for item in listOfEventIDs:
   formattedResponse = json.loads(response)
   listOfEventResponse.append(formattedResponse)
 
+EBToHTMLParser.EBToHTMLParser(listOfEventResponse[0])
