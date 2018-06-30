@@ -48,4 +48,4 @@ for item in listOfEventIDs:
   formattedResponse = json.loads(response)
   listOfEventResponse.append(formattedResponse)
 
-EBToHTMLParser.EBToHTMLParser(listOfEventResponse[0])
+EBToHTMLParser.EBToHTMLParser(listOfEventResponse[4])
