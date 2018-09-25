@@ -43,9 +43,11 @@ eventBriteAPIToken = '?token=' + ebToken
 eventBriteAPIRootURL = 'https://www.eventbriteapi.com/v3/'
 eventBriteAPIEventURL = eventBriteAPIRootURL + 'events/'
 
+# Creates a list of responses for every single IDs in listOfEventIDs
 for item in listOfEventIDs:
   response = urllib.request.urlopen(eventBriteAPIEventURL + item + eventBriteAPIToken).read()
   formattedResponse = json.loads(response)
   listOfEventResponse.append(formattedResponse)
+# End
 
 EBToHTMLParser.EBToHTMLParser(listOfEventResponse[4])
