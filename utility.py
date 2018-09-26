@@ -23,3 +23,19 @@ def intToMonthParser(number):
     return 'Nov'
   elif number == 12:
     return 'Dec'
+
+def intToDayOfTheWeek(number):
+  if number == 0:
+    return 'Mon'
+  elif number == 1:
+    return 'Tue'
+  elif number == 2:
+    return 'Wed'
+  elif number == 3:
+    return 'Thu'
+  elif number == 4:
+    return 'Fri'
+  elif number == 5:
+    return 'Sat'
+  elif number == 6:
+    return 'Sun'
