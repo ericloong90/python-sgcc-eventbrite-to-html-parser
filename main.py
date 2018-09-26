@@ -3,7 +3,7 @@
 import sys, getopt
 import urllib.request
 import json
-import EBToHTMLParser
+from EBToHTMLParser import EBToHTMLParser
 
 # This part obtains arguments from user input
 # Start
@@ -50,4 +50,10 @@ for item in listOfEventIDs:
   listOfEventResponse.append(formattedResponse)
 # End
 
-EBToHTMLParser.EBToHTMLParser(listOfEventResponse[4])
+# print(EBToHTMLParser(listOfEventResponse[4]))
+
+# Writes responses from EBToHTMLParser to the output file
+outputFileStream = open(outputFile, 'w')
+for item in listOfEventResponse:
+  outputFileStream.write(EBToHTMLParser(item))
+# End

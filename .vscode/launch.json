@@ -98,20 +98,16 @@
       "type": "python",
       "request": "launch",
       "pythonPath": "${config:python.pythonPath}",
-      "program": "${file}",
-      "module": "module.name",
+      "program": "/Users/d4rkness/code/python-sgcc-eventbrite-to-HTML-parser/main.py",
       "env": {
-        "VAR1": "1",
-        "VAR2": "2"
       },
       "envFile": "${workspaceFolder}/.env",
       "args": [
-        "arg1",
-        "arg2"
+        "-i",
+        "~/Desktop/test.txt",
+        "-o",
+        "~/Desktop/output.html"
       ],
-      "debugOptions": [
-        "RedirectOutput"
-      ]
     }
   ]
 }
