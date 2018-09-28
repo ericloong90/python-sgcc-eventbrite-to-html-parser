@@ -412,7 +412,7 @@ def EBToHTMLParser(data):
       <div class="schedule-time">{} - {}</div>
     </th>
     <td>
-      <a href="/courses/academics/index.html">Academics</a>
+      <a href="/courses/academics/index.html">Java 1</a>
     </td>
     <td>
       <a href="#contact" class="enrol-block-text-holidaycamps">{}</a>
