@@ -23,7 +23,7 @@ def EBToHTMLParser(data):
 
   fundamentals1HolidayCampTemplateString = """
 
-  <!-- FUNdamentals 1 Holiday Camp card -->
+  <!-- FUNdamentals 1 Holiday Camp card - 1/2 -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -55,8 +55,29 @@ def EBToHTMLParser(data):
       <small class="course-card-clause">*at least 14 days before the first class</small>
     </div>
   </div>
-  <!-- End of FUNdamentals 1 Holiday Camp card -->
+  <!-- End of FUNdamentals 1 Holiday Camp card - 1/2 -->
 
+  <!-- FUNdamentals 1 Holiday Camp card - 2/2-->
+  <tr class="fun1">
+    <th scope="row">{} - {}
+      <br>{} {} - {} {}
+      <br>
+      <div class="schedule-time">{} - {}</div>
+    </th>
+    <td>
+      <a href="/courses/fundamentals1/index.html">FUNdamentals 1</a>
+    </td>
+    <td>
+      <a href="#contact" class="enrol-block-text-holidaycamps">{}</a>
+    </td>
+    <td>7-8</td>
+    <th class="visible-sm visible-md visible-lg">
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style-v2 btn-apply btn-hc-signup'>Sign Up</a>
+      <a href="/courses/fundamentals1/index.html" target='_blank' rel="noopener" class='btn btn-info btn-style-v2 btn-foc btn-hc-desc'>Course Description</a>
+    </th>
+  </tr>
+  <!-- End of FUNdamentals 1 Holiday Camp card - 2/2 -->
   """
 
   basics1HolidayCampTemplateString = """
@@ -426,7 +447,7 @@ def EBToHTMLParser(data):
       
       daysString = daysString[:-1]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
