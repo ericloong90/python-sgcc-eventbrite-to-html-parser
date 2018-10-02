@@ -104,7 +104,7 @@
       "envFile": "${workspaceFolder}/.env",
       "args": [
         "-i",
-        "~/Desktop/test.txt",
+        "~/Desktop/input.txt",
         "-o",
         "~/Desktop/output.html"
       ],
