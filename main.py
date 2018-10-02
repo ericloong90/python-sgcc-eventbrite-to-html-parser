@@ -1,6 +1,6 @@
 #! /Users/d4rkness/.pyenv/shims/python
 
-import sys, getopt
+import sys, getopt, os
 import urllib.request
 import json
 from EBToHTMLParser import EBToHTMLParser
@@ -50,10 +50,10 @@ for item in listOfEventIDs:
   listOfEventResponse.append(formattedResponse)
 # End
 
-# print(EBToHTMLParser(listOfEventResponse[4]))
-
 # Writes responses from EBToHTMLParser to the output file
 outputFileStream = open(outputFile, 'w')
 for item in listOfEventResponse:
   outputFileStream.write(EBToHTMLParser(item))
 # End
+
+os.system('say "Parsing complete"')
