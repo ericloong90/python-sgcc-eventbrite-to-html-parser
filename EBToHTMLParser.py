@@ -300,6 +300,62 @@ def EBToHTMLParser(data):
 
   """
 
+  basics5HolidayCampTemplateString = """
+
+  <!-- Basics 5 Holiday Camp card 1/2 -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="holiday-schedule">Holiday Camp</div>4hrs x 4 Weekdays:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD725</b>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Basics 5 Holiday Camp card 1/2 -->
+
+  <!-- Basics 5 Holiday Camp card - 2/2 -->
+  <tr class="boc5">
+    <th scope="row">{} - {}
+      <br>{} {} - {} {}
+      <br>
+      <div class="schedule-time">{} - {}</div>
+    </th>
+    <td>
+      <a href="/courses/boc5/index.html">Basics 5</a>
+    </td>
+    <td>
+      <a href="#contact" class="enrol-block-text-holidaycamps">{}</a>
+    </td>
+    <td>11 - 12</td>
+    <th class="visible-sm visible-md visible-lg">
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style-v2 btn-apply btn-hc-signup'>Sign Up</a>
+      <a href="/courses/boc5/index.html" target='_blank' rel="noopener" class='btn btn-info btn-style-v2 btn-foc btn-hc-desc'>Course Description</a>
+    </th>
+  </tr>
+  <!-- End of Basics 5 Holiday Camp card - 2/2 -->
+
+  """
+
   basics6WeeklyTemplateString = """
 
   <!-- Basics 6 Weekend Weekly Card -->
@@ -656,6 +712,26 @@ def EBToHTMLParser(data):
       daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Basics 5':
+      finalHTMLString = basics5HolidayCampTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
