@@ -484,6 +484,40 @@ def EBToHTMLParser(data):
 
   """
 
+  principles2WeeklyTemplateString = """
+
+  <!-- Principles 2 Weekend Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD725</b>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Principles 2 Weekend Weekly Card -->
+
+  """
+
   principles3HolidayCampTemplateString = """
 
   <!-- Principles 3 Holiday Camp card -->
@@ -879,6 +913,26 @@ def EBToHTMLParser(data):
 
     elif courseName in ['Basics 6R', 'Basics 6G', 'Basics 6B']:
       finalHTMLString = basics6WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Principles 2':
+      finalHTMLString = principles2WeeklyTemplateString[:]
       listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
       daysString = intToMonthParser(courseStartMonth)
       currentMonth = courseStartMonth
