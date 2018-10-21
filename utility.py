@@ -39,3 +39,8 @@ def intToDayOfTheWeek(number):
     return 'Sat'
   elif number == 6:
     return 'Sun'
+
+def intToFullDayOfTheWeek(number):
+  courseDays = ['Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays']
+
+  return courseDays[number]

@@ -928,22 +928,7 @@ def EBToHTMLParser(data):
 
   else:
     day = parse(data["start"]["local"]).weekday()
-
-    if day == 0:
-      courseDay = 'Mondays'
-    elif day == 1:
-      courseDay = 'Tuesdays'
-    elif day == 2:
-      courseDay = 'Wednesdays'
-    elif day == 3:
-      courseDay = 'Thursdays'
-    elif day == 4:
-      courseDay = 'Fridays'
-    elif day == 5:
-      courseDay = 'Saturdays'
-    elif day == 6:
-      courseDay = 'Sundays'
-
+    courseDay = intToFullDayOfTheWeek(day)
 
     if courseName == 'Basics 3':
       finalHTMLString = basics3WeeklyTemplateString[:]
