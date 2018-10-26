@@ -509,7 +509,7 @@ def EBToHTMLParser(data):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD725</b>
+      <b>SGD775</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
