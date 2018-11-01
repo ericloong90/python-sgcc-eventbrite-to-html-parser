@@ -1,4 +1,4 @@
-/lib/
+lib/
 /token.txt
-/.vscode/
-/__pycache__/
+.vscode/
+__pycache__/
