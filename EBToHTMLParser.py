@@ -149,7 +149,7 @@ def EBToHTMLParser(data):
         <b>{} - {}</b>
       </div>
       <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
-        <div class="holiday-schedule">Holiday Camp</div>4hrs x 4 Weekdays:
+        <div class="holiday-schedule">Holiday Camp ({})</div>4hrs x 4 Weekdays:
         <br>
         <span class="hlHint">
           <b>
@@ -275,7 +275,7 @@ def EBToHTMLParser(data):
         <b>{} - {}</b>
       </div>
       <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
-        <div class="holiday-schedule">Holiday Camp</div>4hrs x 4 Weekdays:
+        <div class="holiday-schedule">Holiday Camp ({})</div>4hrs x 4 Weekdays:
         <br>
         <span class="hlHint">
           <b>
@@ -365,7 +365,7 @@ def EBToHTMLParser(data):
         <b>{} - {}</b>
       </div>
       <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
-        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <div class="weekly-schedule">{} ({})</div>2hrs x 8 {}:
         <br>
         <span class="hlHint">
           <b>
@@ -739,7 +739,7 @@ def EBToHTMLParser(data):
       
       daysString = daysString[:-1]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, courseURL)
 
       return finalHTMLString
 
@@ -779,7 +779,7 @@ def EBToHTMLParser(data):
       
       daysString = daysString[:-1]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, courseURL)
 
       return finalHTMLString
 
@@ -966,7 +966,7 @@ def EBToHTMLParser(data):
       
       daysString = daysString[:-1]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
 
       return finalHTMLString
 
