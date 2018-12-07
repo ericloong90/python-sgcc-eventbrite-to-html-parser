@@ -80,6 +80,76 @@ def EBToHTMLParser(data):
   <!-- End of FUNdamentals 1 Holiday Camp card - 2/2 -->
   """
 
+  fundamentals1WeeklyTemplateString = """
+
+  <!-- Fundamentals 1 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{} ({})</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD575</b>
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Fundamentals 1 Weekly Card -->
+
+  """
+
+  fundamentals2WeeklyTemplateString = """
+
+  <!-- Fundamentals 2 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{} ({})</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD575</b>
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Fundamentals 2 Weekly Card -->
+
+  """
+
   basics1HolidayCampTemplateString = """
 
   <!-- Basics 1 Holiday Camp card - 1/2 -->
@@ -140,6 +210,43 @@ def EBToHTMLParser(data):
 
   """
 
+  basics1WeeklyTemplateString = """
+
+  <!-- Basics 1 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 5 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD395</b>
+      <br>Early Bird*: SGD370
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+      <small class="course-card-clause">*at least 14 days before the first class</small>
+    </div>
+  </div>
+  <!-- End of Basics 1 Weekly Card -->
+
+  """
+
   basics2HolidayCampTemplateString = """
 
   <!-- Basics 2 Holiday Camp card -->
@@ -171,6 +278,41 @@ def EBToHTMLParser(data):
     </div>
   </div>
   <!-- End of Basics 2 Holiday Camp card -->
+
+  """
+
+  basics2WeeklyTemplateString = """
+
+  <!-- Basics 2 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{} ({})</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD575</b>
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Basics 2 Weekly Card -->
 
   """
 
@@ -300,6 +442,41 @@ def EBToHTMLParser(data):
 
   """
 
+  basics4WeeklyTemplateString = """
+
+  <!-- Basics 4 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{} ({})</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD725</b>
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Basics 4 Weekly Card -->
+
+  """
+
   basics5HolidayCampTemplateString = """
 
   <!-- Basics 5 Holiday Camp card 1/2 -->
@@ -353,6 +530,41 @@ def EBToHTMLParser(data):
     </th>
   </tr>
   <!-- End of Basics 5 Holiday Camp card - 2/2 -->
+
+  """
+
+  basics5WeeklyTemplateString = """
+
+  <!-- Basics 5 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD725</b>
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Basics 5 Weekly Card -->
 
   """
 
@@ -448,6 +660,43 @@ def EBToHTMLParser(data):
   </tr>
   <!-- End of Principles 1 Holiday Camp card - 2/2 -->
   
+  """
+
+  principles1WeeklyTemplateString = """
+
+  <!-- Principles 1 Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 5 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD485</b>
+      <br>Early Bird*: SGD460
+      <br>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+      <small class="course-card-clause">*at least 14 days before the first class</small>
+    </div>
+  </div>
+  <!-- End of Principles 1 Weekly Card -->
+
   """
 
   principles2HolidayCampTemplateString = """
@@ -552,6 +801,40 @@ def EBToHTMLParser(data):
 
   """
 
+  principles3WeeklyTemplateString = """
+
+  <!-- Principles 3 Weekend Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{} {}</div>2hrs x {} {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>{}</b>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Principles 3 Weekend Weekly Card -->
+
+  """
+
   principles4HolidayCampTemplateString = """
 
   <!-- Principles 4 Holiday Camp card -->
@@ -586,6 +869,40 @@ def EBToHTMLParser(data):
 
   """
 
+  principles4WeeklyTemplateString = """
+
+  <!-- Principles 4 Weekend Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD880</b>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Principles 4 Weekend Weekly Card -->
+
+  """
+
   principles5HolidayCampTemplateString = """
 
   <!-- Principles 5 Holiday Camp card -->
@@ -617,6 +934,74 @@ def EBToHTMLParser(data):
     </div>
   </div>
   <!-- End of Principles 5 Holiday Camp card -->
+
+  """
+
+  principles5WeeklyTemplateString = """
+
+  <!-- Principles 5 Weekend Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD830</b>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Principles 5 Weekend Weekly Card -->
+
+  """
+
+  principles6WeeklyTemplateString = """
+
+  <!-- Principles 6 Weekend Weekly Card -->
+  <div class="flexWrap sessionCard">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
+      <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
+        <b>{} - {}</b>
+      </div>
+      <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
+        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <br>
+        <span class="hlHint">
+          <b>
+            {}
+          </b>
+        </span>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 enrol-block">
+        <b class="enrol-block-location">Location</b>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-9 enrol-block">
+        <a href="#contact" class="enrol-block-text">{} Campus</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
+      <b>SGD880</b>
+      <a href='{}' target='_blank' rel="noopener"
+        class='btn btn-danger btn-style btn-apply'>Sign Up</a>
+    </div>
+  </div>
+  <!-- End of Principles 6 Weekend Weekly Card -->
 
   """
 
@@ -947,12 +1332,133 @@ def EBToHTMLParser(data):
       return 'Event name not found, please check {}'.format(courseName)
 
   else:
+    # This part parses the weekly events
     day = parse(data["start"]["local"]).weekday()
     courseDay = intToFullDayOfTheWeek(day)
 
-    if courseName == 'Basics 3':
+    if courseName == 'FUNdamentals 1':
+      finalHTMLString = fundamentals1WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName in ['FUNdamentals 2R', 'FUNdamentals 2G', 'FUNdamentals 2B']:
+      finalHTMLString = basics2WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Basics 1':
+      finalHTMLString = basics1WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName in ['Basics 2R', 'Basics 2G', 'Basics 2B']:
+      finalHTMLString = basics2WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Basics 3':
       finalHTMLString = basics3WeeklyTemplateString[:]
       listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName in ['Basics 4R', 'Basics 4G', 'Basics 4B']:
+      finalHTMLString = basics4WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Basics 5':
+      finalHTMLString = basics5WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
       daysString = intToMonthParser(courseStartMonth)
       currentMonth = courseStartMonth
 
@@ -990,8 +1496,123 @@ def EBToHTMLParser(data):
 
       return finalHTMLString
 
+    elif courseName == 'Principles 1':
+      finalHTMLString = principles1WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
     elif courseName == 'Principles 2':
       finalHTMLString = principles2WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName in ['Principles 3', 'Principles 3R', 'Principles 3G', 'Principles 3B']:
+      finalHTMLString = principles3WeeklyTemplateString[:]
+
+      if courseName == 'Principles 3':
+        courseNumberOfLessons = 8
+        coursePrice = 'SGD880'
+      else:
+        courseNumberOfLessons = 4
+        coursePrice = 'SGD440'
+
+      listAllEventDays = list(rrule(DAILY, interval=7, count=courseNumberOfLessons, dtstart=parse(data["start"]["local"])))
+
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      if courseName == 'Principles 3':
+        courseName = ''
+      else:
+        courseName = '({})'.format(courseName)
+
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseNumberOfLessons, courseDay, daysString, courseLocation, coursePrice, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Principles 4':
+      finalHTMLString = principles4WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Principles 5':
+      finalHTMLString = principles5WeeklyTemplateString[:]
+      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
+      daysString = intToMonthParser(courseStartMonth)
+      currentMonth = courseStartMonth
+
+      for date in listAllEventDays:
+        if date.month == currentMonth:
+          daysString += ' {},'.format(date.day)
+        elif date.month != currentMonth:
+          currentMonth = date.month
+          daysString = daysString[:-1]
+          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+      
+      daysString = daysString[:-1]
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+
+      return finalHTMLString
+
+    elif courseName == 'Principles 6':
+      finalHTMLString = principles6WeeklyTemplateString[:]
       listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
       daysString = intToMonthParser(courseStartMonth)
       currentMonth = courseStartMonth
