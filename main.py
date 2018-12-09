@@ -56,4 +56,4 @@ for item in listOfEventResponse:
   outputFileStream.write(EBToHTMLParser(item))
 # End
 
-os.system('say "Parsing complete"')
+os.system('say "{} links processed."'.format(len(listOfEventResponse)))
