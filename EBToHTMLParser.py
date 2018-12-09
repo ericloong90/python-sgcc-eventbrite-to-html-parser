@@ -3,11 +3,13 @@ from dateutil.rrule import *
 from datetime import *
 from utility import *
 
-def EBToHTMLParser(data):
+def EBToHTMLParser(data, holidaysDateString):
   courseName = ' '.join(data["name"]["text"].split(' ')[0:2])
   courseLocation = 'Marine Parade' if ('@MP' in data["name"]["text"].split(' ')) else 'Bukit Timah'
   courseID = data["id"]
   courseURL = data["url"]
+  courseStartDateTimeObject = parse(data["start"]["local"])
+  cleanCourseStartDateTimeObject = datetime.combine(courseStartDateTimeObject.date(), courseStartDateTimeObject.min.timetz())
   courseStartMonth = parse(data["start"]["local"]).month
   courseStartDay = parse(data["start"]["local"]).day
   courseStartDayOfTheWeek = intToDayOfTheWeek(parse(data["start"]["local"]).weekday())
@@ -1067,22 +1069,28 @@ def EBToHTMLParser(data):
 
   if courseType == 'Holiday Camp':
     courseDay = 'Weekdays'
+    set = rruleset()
+    set.rrule(rrule(DAILY, interval=1, until=parse(data["end"]["local"]),dtstart=cleanCourseStartDateTimeObject))
+
+    for day in holidaysDateString.split(' '):
+      set.exdate(parse(day, dayfirst=True))
+
+    listAllEventDays = list(set)
+    daysString = intToMonthParser(courseStartMonth)
+    currentMonth = courseStartMonth
+
+    for date in listAllEventDays:
+      if date.month == currentMonth:
+        daysString += ' {},'.format(date.day)
+      elif date.month != currentMonth:
+        currentMonth = date.month
+        daysString = daysString[:-1]
+        daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+    
+    daysString = daysString[:-1]
 
     if courseName == 'FUNdamentals 1':
       finalHTMLString = fundamentals1HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
@@ -1090,19 +1098,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Basics 1':
       finalHTMLString = basics1HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
@@ -1110,19 +1105,6 @@ def EBToHTMLParser(data):
 
     elif courseName in ['Basics 2R', 'Basics 2G', 'Basics 2B']:
       finalHTMLString = basics2HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, courseURL)
 
@@ -1130,19 +1112,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Basics 3':
       finalHTMLString = basics3HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
@@ -1150,19 +1119,6 @@ def EBToHTMLParser(data):
 
     elif courseName in ['Basics 4R', 'Basics 4G', 'Basics 4B']:
       finalHTMLString = basics4HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, courseURL)
 
@@ -1170,19 +1126,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Basics 5':
       finalHTMLString = basics5HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
@@ -1190,19 +1133,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Java 1':
       finalHTMLString = academics1HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
@@ -1212,37 +1142,11 @@ def EBToHTMLParser(data):
       finalHTMLString = principles1HolidayCampTemplateString[:]
 
       if (courseEndDay - courseStartDay) == 3:
-        listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-        daysString = intToMonthParser(courseStartMonth)
-        currentMonth = courseStartMonth
         hoursPerLesson = 2.5
         numberOfCourseDays = len(listAllEventDays)
-
-        for date in listAllEventDays:
-          if date.month == currentMonth:
-            daysString += ' {},'.format(date.day)
-          elif date.month != currentMonth:
-            currentMonth = date.month
-            daysString = daysString[:-1]
-            daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-        
-        daysString = daysString[:-1]
       else:
-        listAllEventDays = list(rrule(DAILY, interval=1, count=5, dtstart=parse(data["start"]["local"])))
-        daysString = intToMonthParser(courseStartMonth)
-        currentMonth = courseStartMonth
         hoursPerLesson = 2
         numberOfCourseDays = len(listAllEventDays)
-
-        for date in listAllEventDays:
-          if date.month == currentMonth:
-            daysString += ' {},'.format(date.day)
-          elif date.month != currentMonth:
-            currentMonth = date.month
-            daysString = daysString[:-1]
-            daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-        
-        daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, hoursPerLesson, numberOfCourseDays, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
@@ -1250,19 +1154,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 2':
       finalHTMLString = principles2HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
 
@@ -1270,19 +1161,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 3':
       finalHTMLString = principles3HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
 
@@ -1290,19 +1168,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 4':
       finalHTMLString = principles4HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
 
@@ -1310,19 +1175,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 5':
       finalHTMLString = principles5HolidayCampTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=1, count=4, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
 
@@ -1335,22 +1187,28 @@ def EBToHTMLParser(data):
     # This part parses the weekly events
     day = parse(data["start"]["local"]).weekday()
     courseDay = intToFullDayOfTheWeek(day)
+    set = rruleset()
+    set.rrule(rrule(DAILY, interval=7, until=parse(data["end"]["local"]),dtstart=cleanCourseStartDateTimeObject))
+
+    for day in holidaysDateString.split(' '):
+      set.exdate(parse(day, dayfirst=True))
+
+    listAllEventDays = list(set)
+    daysString = intToMonthParser(courseStartMonth)
+    currentMonth = courseStartMonth
+
+    for date in listAllEventDays:
+      if date.month == currentMonth:
+        daysString += ' {},'.format(date.day)
+      elif date.month != currentMonth:
+        currentMonth = date.month
+        daysString = daysString[:-1]
+        daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
+    
+    daysString = daysString[:-1]
 
     if courseName == 'FUNdamentals 1':
       finalHTMLString = fundamentals1WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1358,19 +1216,6 @@ def EBToHTMLParser(data):
 
     elif courseName in ['FUNdamentals 2R', 'FUNdamentals 2G', 'FUNdamentals 2B']:
       finalHTMLString = basics2WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
 
@@ -1378,19 +1223,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Basics 1':
       finalHTMLString = basics1WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1398,19 +1230,6 @@ def EBToHTMLParser(data):
 
     elif courseName in ['Basics 2R', 'Basics 2G', 'Basics 2B']:
       finalHTMLString = basics2WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
 
@@ -1418,19 +1237,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Basics 3':
       finalHTMLString = basics3WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1438,19 +1244,6 @@ def EBToHTMLParser(data):
 
     elif courseName in ['Basics 4R', 'Basics 4G', 'Basics 4B']:
       finalHTMLString = basics4WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
 
@@ -1458,19 +1251,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Basics 5':
       finalHTMLString = basics5WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1478,19 +1258,6 @@ def EBToHTMLParser(data):
 
     elif courseName in ['Basics 6R', 'Basics 6G', 'Basics 6B']:
       finalHTMLString = basics6WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
 
@@ -1498,19 +1265,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 1':
       finalHTMLString = principles1WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=5, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1518,19 +1272,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 2':
       finalHTMLString = principles2WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1546,26 +1287,10 @@ def EBToHTMLParser(data):
         courseNumberOfLessons = 4
         coursePrice = 'SGD440'
 
-      listAllEventDays = list(rrule(DAILY, interval=7, count=courseNumberOfLessons, dtstart=parse(data["start"]["local"])))
-
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
       if courseName == 'Principles 3':
         courseName = ''
       else:
         courseName = '({})'.format(courseName)
-
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseNumberOfLessons, courseDay, daysString, courseLocation, coursePrice, courseURL)
 
@@ -1573,19 +1298,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 4':
       finalHTMLString = principles4WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1593,19 +1305,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 5':
       finalHTMLString = principles5WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 
@@ -1613,19 +1312,6 @@ def EBToHTMLParser(data):
 
     elif courseName == 'Principles 6':
       finalHTMLString = principles6WeeklyTemplateString[:]
-      listAllEventDays = list(rrule(DAILY, interval=7, count=8, dtstart=parse(data["start"]["local"])))
-      daysString = intToMonthParser(courseStartMonth)
-      currentMonth = courseStartMonth
-
-      for date in listAllEventDays:
-        if date.month == currentMonth:
-          daysString += ' {},'.format(date.day)
-        elif date.month != currentMonth:
-          currentMonth = date.month
-          daysString = daysString[:-1]
-          daysString += '<br>{} {},'.format(intToMonthParser(date.month), date.day)
-      
-      daysString = daysString[:-1]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
 

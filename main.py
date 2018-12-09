@@ -9,14 +9,17 @@ from EBToHTMLParser import EBToHTMLParser
 # Start
 inputFile = ''
 outputFile = ''
+holidaysDateString = '1/1/1990'
 
-myOptions, myArguments = getopt.getopt(sys.argv[1:], 'i:o:')
+myOptions, myArguments = getopt.getopt(sys.argv[1:], 'i:o:x:')
 
 for option, argument in myOptions:
   if option == '-i':
     inputFile = argument
   elif option == '-o':
     outputFile = argument
+  elif option == '-x':
+    holidaysDateString = argument
 # End
 
 # This function extract event ID from EventBrite URL
@@ -53,7 +56,7 @@ for item in listOfEventIDs:
 # Writes responses from EBToHTMLParser to the output file
 outputFileStream = open(outputFile, 'w')
 for item in listOfEventResponse:
-  outputFileStream.write(EBToHTMLParser(item))
+  outputFileStream.write(EBToHTMLParser(item, holidaysDateString))
 # End
 
 os.system('say "{} links processed."'.format(len(listOfEventResponse)))
