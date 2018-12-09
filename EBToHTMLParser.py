@@ -1215,7 +1215,7 @@ def EBToHTMLParser(data, holidaysDateString):
       return finalHTMLString
 
     elif courseName in ['FUNdamentals 2R', 'FUNdamentals 2G', 'FUNdamentals 2B']:
-      finalHTMLString = basics2WeeklyTemplateString[:]
+      finalHTMLString = fundamentals2WeeklyTemplateString[:]
 
       finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
 
