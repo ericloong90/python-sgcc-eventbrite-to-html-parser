@@ -469,7 +469,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD725</b>
+      <b>{}</b>
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -1245,7 +1245,13 @@ def EBToHTMLParser(data, holidaysDateString):
     elif courseName in ['Basics 4R', 'Basics 4G', 'Basics 4B']:
       finalHTMLString = basics4WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+      # TODO: Remove this part once I get the coursePrice feature abstracted into a separate portion
+      if courseType == 'Weekday Weekly':
+        coursePrice = 'SGD675'
+      elif courseType == 'Weekend Weekly':
+        coursePrice = 'SGD725'
+
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, coursePrice, courseURL)
 
       return finalHTMLString
 
