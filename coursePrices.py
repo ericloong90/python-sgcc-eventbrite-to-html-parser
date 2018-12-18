@@ -12,12 +12,12 @@ fundamentals2 = {
 }
 
 basics1 = {
-  "camp": 455,
+  "camp": 395,
   "weekly": 395
 }
 
 basics2 = {
-  "camp": 725,
+  "camp": 625,
   "weekly": 625
 }
 
