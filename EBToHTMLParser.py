@@ -20,6 +20,9 @@ def EBToHTMLParser(data, holidaysDateString):
   courseEndTime = parse(data["end"]["local"]).strftime('%I:%M%p').lstrip('0').lower()
   courseType = 'Holiday Camp' if ('Camp' in data["name"]["text"].split(' ')) else ('Weekend Weekly' if (('Weekly' in data["name"]["text"].split(' ')) and (parse(data["start"]["local"]).weekday() == 5 or parse(data["start"]["local"]).weekday() == 6)) else 'Weekday Weekly')
   courseDay = parse(data["start"]["local"]).weekday()
+  coursePrice = coursePriceGenerator(courseName, courseType)
+  coursePriceNormal = coursePrice["normal"]
+  coursePriceEarlyBird = coursePrice["earlyBird"]
 
   finalHTMLString = 'hello'
 
@@ -48,8 +51,8 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD395</b>
-      <br>Early Bird*: SGD370
+      <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -107,7 +110,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD575</b>
+      <b>{}</b>
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -142,7 +145,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD575</b>
+      <b>{}</b>
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -177,8 +180,8 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD455</b>
-      <br>Early Bird*: SGD430
+      <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -237,8 +240,8 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD395</b>
-      <br>Early Bird*: SGD370
+      <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -274,7 +277,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD675</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -308,7 +311,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD575</b>
+      <b>{}</b>
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -343,7 +346,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD455</b>
+      <b>{}</b>
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -401,7 +404,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD455</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -435,7 +438,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD725</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -504,7 +507,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD725</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -560,7 +563,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD725</b>
+      <b>{}</b>
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -595,7 +598,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD725</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -629,8 +632,8 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD485</b>
-      <br>Early Bird*: SGD460
+      <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -689,8 +692,8 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD485</b>
-      <br>Early Bird*: SGD460
+      <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -726,7 +729,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD775</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -760,7 +763,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD775</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -794,7 +797,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD880</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -862,7 +865,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD880</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -896,7 +899,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD880</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -930,7 +933,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD880</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -964,7 +967,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD830</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -998,7 +1001,7 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD880</b>
+      <b>{}</b>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
@@ -1032,8 +1035,8 @@ def EBToHTMLParser(data, holidaysDateString):
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
-      <b>SGD790</b>
-      <br>Early Bird*: SGD745
+      <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -1092,49 +1095,49 @@ def EBToHTMLParser(data, holidaysDateString):
     if courseName == 'FUNdamentals 1':
       finalHTMLString = fundamentals1HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Basics 1':
       finalHTMLString = basics1HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL)
 
       return finalHTMLString
 
     elif courseName in ['Basics 2R', 'Basics 2G', 'Basics 2B']:
       finalHTMLString = basics2HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Basics 3':
       finalHTMLString = basics3HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
     elif courseName in ['Basics 4R', 'Basics 4G', 'Basics 4B']:
       finalHTMLString = basics4HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseName, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Basics 5':
       finalHTMLString = basics5HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Java 1':
       finalHTMLString = academics1HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
@@ -1148,35 +1151,35 @@ def EBToHTMLParser(data, holidaysDateString):
         hoursPerLesson = 2
         numberOfCourseDays = len(listAllEventDays)
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, hoursPerLesson, numberOfCourseDays, daysString, courseLocation, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, hoursPerLesson, numberOfCourseDays, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 2':
       finalHTMLString = principles2HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 3':
       finalHTMLString = principles3HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 4':
       finalHTMLString = principles4HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 5':
       finalHTMLString = principles5HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
     
@@ -1210,76 +1213,70 @@ def EBToHTMLParser(data, holidaysDateString):
     if courseName == 'FUNdamentals 1':
       finalHTMLString = fundamentals1WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName in ['FUNdamentals 2R', 'FUNdamentals 2G', 'FUNdamentals 2B']:
       finalHTMLString = fundamentals2WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Basics 1':
       finalHTMLString = basics1WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL)
 
       return finalHTMLString
 
     elif courseName in ['Basics 2R', 'Basics 2G', 'Basics 2B']:
       finalHTMLString = basics2WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Basics 3':
       finalHTMLString = basics3WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName in ['Basics 4R', 'Basics 4G', 'Basics 4B']:
       finalHTMLString = basics4WeeklyTemplateString[:]
 
-      # TODO: Remove this part once I get the coursePrice feature abstracted into a separate portion
-      if courseType == 'Weekday Weekly':
-        coursePrice = 'SGD675'
-      elif courseType == 'Weekend Weekly':
-        coursePrice = 'SGD725'
-
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, coursePrice, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Basics 5':
       finalHTMLString = basics5WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName in ['Basics 6R', 'Basics 6G', 'Basics 6B']:
       finalHTMLString = basics6WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 1':
       finalHTMLString = principles1WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 2':
       finalHTMLString = principles2WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
@@ -1288,37 +1285,35 @@ def EBToHTMLParser(data, holidaysDateString):
 
       if courseName == 'Principles 3':
         courseNumberOfLessons = 8
-        coursePrice = 'SGD880'
       else:
         courseNumberOfLessons = 4
-        coursePrice = 'SGD440'
 
       if courseName == 'Principles 3':
-        courseName = ''
+        courseName3RGB = ''
       else:
-        courseName = '({})'.format(courseName)
+        courseName3RGB = '({})'.format(courseName)
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName, courseNumberOfLessons, courseDay, daysString, courseLocation, coursePrice, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseName3RGB, courseNumberOfLessons, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 4':
       finalHTMLString = principles4WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 5':
       finalHTMLString = principles5WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
 
     elif courseName == 'Principles 6':
       finalHTMLString = principles6WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
 
       return finalHTMLString
