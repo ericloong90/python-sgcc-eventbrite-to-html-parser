@@ -48,10 +48,7 @@ def intToFullDayOfTheWeek(number):
 
   return courseDays[number]
 
-# TODO: Fix this doc string to properly document the dict that this function is returning
-# This function should return the correct price string 'SGDXXX' for the passed in courseName and courseType
-# coursePrice('FUNdamentals 1', 'Weekday Weekly')
-def coursePrice(courseName, courseType, prices = coursePrices):
+def coursePriceGenerator(courseName, courseType, prices = coursePrices):
   """
   This function will take in 2 compulsory arguments, courseName and courseType.
 
