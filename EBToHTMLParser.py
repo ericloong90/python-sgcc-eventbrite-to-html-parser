@@ -382,7 +382,7 @@ def EBToHTMLParser(data, holidaysDateString):
 
   basics3WeeklyTemplateString = """
 
-  <!-- Basics 3 Weekend Weekly Card -->
+  <!-- Basics 3 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -410,7 +410,7 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Basics 3 Weekend Weekly Card -->
+  <!-- End of Basics 3 Weekly Card -->
 
   """
 
@@ -576,7 +576,7 @@ def EBToHTMLParser(data, holidaysDateString):
 
   basics6WeeklyTemplateString = """
 
-  <!-- Basics 6 Weekend Weekly Card -->
+  <!-- Basics 6 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -604,7 +604,7 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Basics 6 Weekend Weekly Card -->
+  <!-- End of Basics 6 Weekly Card -->
 
   """
 
@@ -741,7 +741,7 @@ def EBToHTMLParser(data, holidaysDateString):
 
   principles2WeeklyTemplateString = """
 
-  <!-- Principles 2 Weekend Weekly Card -->
+  <!-- Principles 2 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -769,7 +769,7 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Principles 2 Weekend Weekly Card -->
+  <!-- End of Principles 2 Weekly Card -->
 
   """
 
@@ -809,7 +809,7 @@ def EBToHTMLParser(data, holidaysDateString):
 
   principles3WeeklyTemplateString = """
 
-  <!-- Principles 3 Weekend Weekly Card -->
+  <!-- Principles 3 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -837,7 +837,7 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Principles 3 Weekend Weekly Card -->
+  <!-- End of Principles 3 Weekly Card -->
 
   """
 
@@ -877,7 +877,7 @@ def EBToHTMLParser(data, holidaysDateString):
 
   principles4WeeklyTemplateString = """
 
-  <!-- Principles 4 Weekend Weekly Card -->
+  <!-- Principles 4 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -905,7 +905,7 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Principles 4 Weekend Weekly Card -->
+  <!-- End of Principles 4 Weekly Card -->
 
   """
 
@@ -945,7 +945,7 @@ def EBToHTMLParser(data, holidaysDateString):
 
   principles5WeeklyTemplateString = """
 
-  <!-- Principles 5 Weekend Weekly Card -->
+  <!-- Principles 5 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -973,13 +973,13 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Principles 5 Weekend Weekly Card -->
+  <!-- End of Principles 5 Weekly Card -->
 
   """
 
   principles6WeeklyTemplateString = """
 
-  <!-- Principles 6 Weekend Weekly Card -->
+  <!-- Principles 6 Weekly Card -->
   <div class="flexWrap sessionCard">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 flexWrap">
       <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-4 enrol-block enrol-date">
@@ -1007,7 +1007,7 @@ def EBToHTMLParser(data, holidaysDateString):
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
     </div>
   </div>
-  <!-- End of Principles 6 Weekend Weekly Card -->
+  <!-- End of Principles 6 Weekly Card -->
 
   """
 
