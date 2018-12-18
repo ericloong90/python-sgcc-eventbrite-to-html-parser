@@ -111,6 +111,7 @@ def EBToHTMLParser(data, holidaysDateString):
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center enrol-block enrol-price">
       <b>{}</b>
+      <br>Early Bird*: {}
       <br>
       <a href='{}' target='_blank' rel="noopener"
         class='btn btn-danger btn-style btn-apply'>Sign Up</a>
@@ -1213,7 +1214,7 @@ def EBToHTMLParser(data, holidaysDateString):
     if courseName == 'FUNdamentals 1':
       finalHTMLString = fundamentals1WeeklyTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, courseType, courseDay, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL)
 
       return finalHTMLString
 
