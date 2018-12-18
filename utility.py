@@ -52,7 +52,16 @@ def intToFullDayOfTheWeek(number):
 # This function should return the correct price string 'SGDXXX' for the passed in courseName and courseType
 # coursePrice('FUNdamentals 1', 'Weekday Weekly')
 def coursePrice(courseName, courseType, prices = coursePrices):
+  """
+  This function will take in 2 compulsory arguments, courseName and courseType.
 
+  courseName is a string of the course name, ie. 'Fundamentals 1'.
+  courseType is a string of the course type, ie. 'Weekend Weekly', 'Weekday Weekly', 'Holiday Camp'.
+
+  The 3rd argument is an optional one, already set by default with coursePrices.py list of prices, so there isn't anything necessary to pass in as 3rd argument.
+
+  This function will parse the given 2 strings, namely courseName and courseType and returns a dictionary, detailing 2 fields, 'normal' and 'earlyBird'.
+  """
   price = {
     "normal": '',
     "earlyBird": ''
