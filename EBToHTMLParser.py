@@ -94,7 +94,7 @@ def EBToHTMLParser(data, holidaysDateString):
         <b>{} - {}</b>
       </div>
       <div class="col-xs-7 col-sm-7 co-md-7 col-lg-8 enrol-block">
-        <div class="weekly-schedule">{}</div>2hrs x 8 {}:
+        <div class="weekly-schedule">{}</div>2hrs x 5 {}:
         <br>
         <span class="hlHint">
           <b>
