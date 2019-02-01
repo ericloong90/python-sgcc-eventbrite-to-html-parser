@@ -59,4 +59,7 @@ for item in listOfEventResponse:
   outputFileStream.write(EBToHTMLParser(item, holidaysDateString))
 # End
 
+# You need to flush the stream to ensure the file writes is always successful.
+outputFileStream.close()
+
 os.system('say "{} links processed."'.format(len(listOfEventResponse)))
