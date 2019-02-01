@@ -1103,7 +1103,7 @@ def EBToHTMLParser(data, holidaysDateString):
     elif courseName == 'Basics 1':
       finalHTMLString = basics1HolidayCampTemplateString[:]
 
-      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL)
+      finalHTMLString = finalHTMLString.format(courseStartTime, courseEndTime, daysString, courseLocation, coursePriceNormal, coursePriceEarlyBird, courseURL, courseStartDayOfTheWeek, courseEndDayOfTheWeek, courseStartDay, intToMonthParser(courseStartMonth), courseEndDay, intToMonthParser(courseEndMonth), courseStartTime, courseEndTime, courseLocation, courseURL)
 
       return finalHTMLString
 
