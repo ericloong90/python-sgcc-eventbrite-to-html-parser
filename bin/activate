@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/d4rkness/code/python-sgcc-eventbrite-to-HTML-parser"
+VIRTUAL_ENV="$HOME/code/python-sgcc-eventbrite-to-HTML-parser"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
